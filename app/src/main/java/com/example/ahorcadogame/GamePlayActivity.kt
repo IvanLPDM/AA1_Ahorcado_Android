@@ -9,13 +9,19 @@ import android.graphics.Color
 import android.widget.TextView
 import android.widget.ImageView
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.Toolbar
 
 class GamePlayActivity : AppCompatActivity() {
+
+    var isNight = false;
 
     val word = "Navidad"  // La palabra a adivinar (tiene que ser un parametro que reciba)
     var letters = 0  // Contador de letras acertadas
     var misses = 0  // Contador de letras acertadas
-    var allowedErrors = 6; //esto tiene que depender de la dificultad
+    var allowedErrors = 11; //esto tiene que depender de la dificultad
     var endGame = false
     val numLetters = word.length
     val acertadas = CharArray(numLetters) { '_' }  // Array para mostrar las letras acertadas
@@ -31,6 +37,10 @@ class GamePlayActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_play)
 
+        //Toolbar
+        val toolbar: Toolbar = findViewById(R.id.myToolBar)
+        setSupportActionBar(toolbar)
+
         // Encuentra el diseño raíz
         val GamePlayLayout: View = findViewById(R.id.gamePlayLayout)
 
@@ -38,6 +48,8 @@ class GamePlayActivity : AppCompatActivity() {
         //Imager Win
         val imageWin = findViewById<ImageView>(R.id.WinMessage)
         val imageLose = findViewById<ImageView>(R.id.LoseMessage)
+
+        val ahorcadoImage: ImageView = findViewById(R.id.miss)
 
         imageWin.visibility = View.INVISIBLE
         imageLose.visibility = View.INVISIBLE
@@ -113,10 +125,6 @@ class GamePlayActivity : AppCompatActivity() {
                         imageLose.visibility = View.VISIBLE
                         endGame = true
                     }
-
-
-
-
             }
 
         }
@@ -135,8 +143,6 @@ class GamePlayActivity : AppCompatActivity() {
             }
         }
 
-
-
     }
 
     private fun processGuess(letter: String) {
@@ -152,6 +158,44 @@ class GamePlayActivity : AppCompatActivity() {
         if(!correctGuess)
         {
             misses++
+            updateMissImage(misses)
         }
+    }
+
+    // Sacar el popUp
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    // input menu settings
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.setting -> {
+                // Alternar entre "Night" y "Day"
+                isNight = !isNight  // Cambiar el estado de "Night" o "Day"
+                setAppTheme(isNight)  // Cambiar el tema
+
+                item.title = if (isNight) "Day" else "Night"  // Cambiar el texto del ítem
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun setAppTheme(isNight: Boolean) {
+        if (isNight) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+    }
+
+    private fun updateMissImage(misses: Int) {
+        val ahorcadoImage: ImageView = findViewById(R.id.miss)
+        val resourceName = "miss$misses"
+        val resId = resources.getIdentifier(resourceName, "mipmap", packageName)
+        ahorcadoImage.setImageResource(resId)
+
     }
 }
