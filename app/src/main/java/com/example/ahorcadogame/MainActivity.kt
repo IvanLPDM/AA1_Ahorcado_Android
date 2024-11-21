@@ -48,9 +48,6 @@ class MainActivity : AppCompatActivity() {
                 // Alternar entre "Night" y "Day"
                 isNight = !isNight  // Cambiar el estado de "Night" o "Day"
                 setAppTheme(isNight)  // Cambiar el tema
-                // Guardar el estado del tema en SharedPreferences
-
-                Log.d("MyTag", "El valor de isNight es: $isNight")
 
                 item.title = if (isNight) "Day" else "Night"  // Cambiar el texto del ítem
                 true
