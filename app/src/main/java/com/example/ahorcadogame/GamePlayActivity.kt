@@ -19,7 +19,6 @@ class GamePlayActivity : AppCompatActivity() {
     var endGame = false
     val numLetters = word.length
     val acertadas = CharArray(numLetters) { '_' }  // Array para mostrar las letras acertadas
-    val numlettersToWin = numLetters - 1;
 
     //Texto a adivinar "___"
     //lateint es para que se inicialice despues de que se cree el layout
@@ -104,7 +103,7 @@ class GamePlayActivity : AppCompatActivity() {
                     view.isEnabled = false
 
                     // Verificar si el jugador ha ganado
-                    if (letters >= numlettersToWin) {
+                    if (letters >= numLetters) {
 
                         imageWin.visibility = View.VISIBLE
                         endGame = true
