@@ -7,6 +7,9 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatDelegate
 import android.util.Log
+import android.widget.Button
+import android.content.Intent
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,7 +21,19 @@ class MainActivity : AppCompatActivity() {
 
         val toolbar: Toolbar = findViewById(R.id.myToolBar)
         setSupportActionBar(toolbar)
+
+        //Pasar a gameplay
+        val botonNivel: Button = findViewById(R.id.Nivel_1)
+
+        botonNivel.setOnClickListener {
+            // Abrir GamePlayActivity
+            val intent = Intent(this, GamePlayActivity::class.java)
+            startActivity(intent)
+        }
     }
+
+
+
 
     // Sacar el popUp
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -52,6 +67,8 @@ class MainActivity : AppCompatActivity() {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
     }
+
+
 
 
 }
