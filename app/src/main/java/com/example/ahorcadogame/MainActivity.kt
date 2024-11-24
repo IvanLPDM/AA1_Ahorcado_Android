@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import android.util.Log
 import android.widget.Button
 import android.content.Intent
-
+import android.widget.ImageButton
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,16 +23,50 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         //Pasar a gameplay
-        val botonNivel: Button = findViewById(R.id.Nivel_1)
+        val botonNivel_1: ImageButton = findViewById(R.id.imageButton_1)
 
-        botonNivel.setOnClickListener {
+        botonNivel_1.setOnClickListener {
+            // Abrir GamePlayActivity
+            val intent = Intent(this, GamePlayActivity::class.java)
+            startActivity(intent)
+        }
+
+        //Pasar a gameplay
+        val botonNivel_2: ImageButton = findViewById(R.id.imageButton_2)
+
+        botonNivel_2.setOnClickListener {
+            // Abrir GamePlayActivity
+            val intent = Intent(this, EasyGamePlayActivity::class.java)
+            startActivity(intent)
+        }
+
+        //Pasar a gameplay
+        val botonNivel_3: ImageButton = findViewById(R.id.imageButton_3)
+
+        botonNivel_3.setOnClickListener {
+            // Abrir GamePlayActivity
+            val intent = Intent(this, HardGamePlayActivity::class.java)
+            startActivity(intent)
+        }
+
+        //Pasar a gameplay
+        val botonNivel_4: ImageButton = findViewById(R.id.imageButton_4)
+
+        botonNivel_4.setOnClickListener {
+            // Abrir GamePlayActivity
+            val intent = Intent(this, GamePlayActivity::class.java)
+            startActivity(intent)
+        }
+
+        //Pasar a gameplay
+        val botonNivel_5: ImageButton = findViewById(R.id.imageButton_5)
+
+        botonNivel_5.setOnClickListener {
             // Abrir GamePlayActivity
             val intent = Intent(this, GamePlayActivity::class.java)
             startActivity(intent)
         }
     }
-
-
 
 
     // Sacar el popUp
@@ -64,8 +98,4 @@ class MainActivity : AppCompatActivity() {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
     }
-
-
-
-
 }

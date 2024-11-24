@@ -21,17 +21,14 @@ class GamePlayActivity : AppCompatActivity() {
     val word = "Navidad"  // La palabra a adivinar (tiene que ser un parametro que reciba)
     var letters = 0  // Contador de letras acertadas
     var misses = 0  // Contador de letras acertadas
-    var allowedErrors = 11; //esto tiene que depender de la dificultad
+    var allowedErrors = 11;
     var endGame = false
     val numLetters = word.length
     val acertadas = CharArray(numLetters) { '_' }  // Array para mostrar las letras acertadas
 
     //Texto a adivinar "___"
     //lateint es para que se inicialice despues de que se cree el layout
-    lateinit var wordTextView: TextView
-
-
-
+    private lateinit var wordTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
