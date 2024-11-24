@@ -7,6 +7,9 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatDelegate
 import android.util.Log
+import android.widget.Button
+import android.content.Intent
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,7 +21,19 @@ class MainActivity : AppCompatActivity() {
 
         val toolbar: Toolbar = findViewById(R.id.myToolBar)
         setSupportActionBar(toolbar)
+
+        //Pasar a gameplay
+        val botonNivel: Button = findViewById(R.id.Nivel_1)
+
+        botonNivel.setOnClickListener {
+            // Abrir GamePlayActivity
+            val intent = Intent(this, GamePlayActivity::class.java)
+            startActivity(intent)
+        }
     }
+
+
+
 
     // Sacar el popUp
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -33,9 +48,6 @@ class MainActivity : AppCompatActivity() {
                 // Alternar entre "Night" y "Day"
                 isNight = !isNight  // Cambiar el estado de "Night" o "Day"
                 setAppTheme(isNight)  // Cambiar el tema
-                // Guardar el estado del tema en SharedPreferences
-
-                Log.d("MyTag", "El valor de isNight es: $isNight")
 
                 item.title = if (isNight) "Day" else "Night"  // Cambiar el texto del ítem
                 true
@@ -52,6 +64,8 @@ class MainActivity : AppCompatActivity() {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
     }
+
+
 
 
 }
