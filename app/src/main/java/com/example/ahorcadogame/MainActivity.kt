@@ -1,5 +1,6 @@
 package com.example.ahorcadogame
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
@@ -9,12 +10,13 @@ import androidx.appcompat.app.AppCompatDelegate
 import android.util.Log
 import android.widget.Button
 import android.content.Intent
-
+import android.widget.ImageButton
 
 class MainActivity : AppCompatActivity() {
 
     var isNight = false;
 
+    @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,17 +25,22 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         //Pasar a gameplay
-        val botonNivel: Button = findViewById(R.id.Nivel_1)
+        val botonNivel_1: ImageButton = findViewById(R.id.nivel_1)
 
-        botonNivel.setOnClickListener {
+        botonNivel_1.setOnClickListener {
+            // Abrir GamePlayActivity
+            val intent = Intent(this, GamePlayActivity::class.java)
+            startActivity(intent)
+        }
+
+        val botonNivel_: Button = findViewById(R.id.nivel_)
+
+        botonNivel_.setOnClickListener {
             // Abrir GamePlayActivity
             val intent = Intent(this, GamePlayActivity::class.java)
             startActivity(intent)
         }
     }
-
-
-
 
     // Sacar el popUp
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -64,8 +71,4 @@ class MainActivity : AppCompatActivity() {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
     }
-
-
-
-
 }

@@ -4,8 +4,6 @@
     <item
         android:title="Day"
         android:id="@+id/setting"
-
-
         />
 
 </menu>
