@@ -18,13 +18,13 @@ class GamePlayActivity : AppCompatActivity() {
 
     var isNight = false;
 
-    val word = "Navidad"  // La palabra a adivinar (tiene que ser un parametro que reciba)
+    private lateinit var word: String
     var letters = 0  // Contador de letras acertadas
     var misses = 0  // Contador de letras acertadas
-    var allowedErrors = 11;
+    var allowedErrors = 11
     var endGame = false
-    val numLetters = word.length
-    val acertadas = CharArray(numLetters) { '_' }  // Array para mostrar las letras acertadas
+    private var numLetters = 0
+    private lateinit var acertadas: CharArray
 
     //Texto a adivinar "___"
     //lateint es para que se inicialice despues de que se cree el layout
@@ -33,6 +33,10 @@ class GamePlayActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_play)
+
+        word = intent.getStringExtra("WORD") ?: "ERROR Abrir Gameplay por nombre"
+        numLetters = word.length
+        acertadas = CharArray(numLetters) { '_' }
 
         //Toolbar
         val toolbar: Toolbar = findViewById(R.id.myToolBar)
