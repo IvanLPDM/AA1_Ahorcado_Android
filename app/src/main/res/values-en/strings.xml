@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HangMan Game</string>
+    <string name="ahorcado">HangMan</string>
+    <string name="tap_to_continue">Tap to continue</string>
+    <string name="palabra_navidad">Word: Christmas</string>
+    <string name="letras_7">Letters: 7</string>
+    <string name="palabra_ola">Word: Wave</string>
+    <string name="letras_3">Letters: 3</string>
+    <string name="palabra_mariposas">Word: Butterflies</string>
+    <string name="letras_9">Letters: 9</string>
+    <string name="level_selector">Level Selector</string>
+</resources>
